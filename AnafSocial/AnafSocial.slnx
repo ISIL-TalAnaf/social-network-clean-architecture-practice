@@ -1,1 +1,8 @@
-<Solution />
+<Solution>
+  <Project Path="AnafSocial.API/AnafSocial.API.csproj" />
+  <Project Path="AnafSocial.Application/AnafSocial.Application.csproj" />
+  <Project Path="AnafSocial.Domain/AnafSocial.Domain.csproj" />
+  <Project Path="AnafSocial.Infrastructure/AnafSocial.Infrastructure.csproj" />
+  <Project Path="AnafSocial.Shared/AnafSocial.Shared.csproj" />
+  <Project Path="AnafSocial.Tests/AnafSocial.Tests.csproj" />
+</Solution>
