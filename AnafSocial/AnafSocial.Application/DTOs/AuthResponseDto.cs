@@ -1,7 +1,3 @@
-using System;
-
 namespace AnafSocial.Application.DTOs;
 
-public record AuthResponseDto
-{
-}
+public record AuthResponseDto(string Token, string Username, Guid UserId, DateTime ExpiresAt);

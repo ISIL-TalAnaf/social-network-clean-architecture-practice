@@ -1,7 +1,3 @@
-using System;
-
 namespace AnafSocial.Application.DTOs;
 
-public record LoginRequestDto
-{
-}
+public record LoginRequestDto(string Email, string Password);

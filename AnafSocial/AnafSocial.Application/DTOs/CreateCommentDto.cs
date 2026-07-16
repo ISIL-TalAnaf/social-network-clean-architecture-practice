@@ -1,7 +1,3 @@
-using System;
-
 namespace AnafSocial.Application.DTOs;
 
-public record CreateCommentDto
-{
-}
+public record CreateCommentDto(string Content);

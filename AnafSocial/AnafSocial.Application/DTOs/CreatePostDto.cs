@@ -1,7 +1,3 @@
-using System;
-
 namespace AnafSocial.Application.DTOs;
 
-public record CreatePostDto
-{
-}
+public record CreatePostDto(string Content, string? ImageUrl);
