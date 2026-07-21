@@ -1,7 +1,8 @@
 
 using System;
-namespace AnafSocial.Application.DTOs;
+using AnafSocial.Application.DTOs;
 
+namespace AnafSocial.Application.Interfaces;
 
 public interface ILikeService
 {

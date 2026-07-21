@@ -13,4 +13,5 @@ public interface IFollowRepository : IRepository<Follow>
     Task<IEnumerable<Guid>> GetFollowingIdsAsync(Guid userId);
     Task<IEnumerable<User>> GetFollowersAsync(Guid userId);
     Task<IEnumerable<User>> GetFollowingAsync(Guid userId);
+    Task RemoveAsync (Follow follow);
 }
