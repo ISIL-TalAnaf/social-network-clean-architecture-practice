@@ -11,6 +11,7 @@ public class Post
     public User Author { get; set; } = new User();
 
     public string Content { get; set; } = string.Empty;
+    public string ImageUrl { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
 

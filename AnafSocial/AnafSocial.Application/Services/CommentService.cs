@@ -19,6 +19,9 @@ public class CommentService : ICommentService
     public CommentService(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
+        _commentRepository = unitOfWork.Comments;
+        _userRepository = unitOfWork.Users; 
+        _postRepository = unitOfWork.Posts;
     }
     public async Task<CommentResponseDto> AddAsync(Guid postId, Guid userId, CreateCommentDto dto)
     {
@@ -39,12 +42,12 @@ public class CommentService : ICommentService
         }
 
         await _commentRepository.AddAsync(comment);
-        await _unitOfWork.CommitAsync();
+        await _unitOfWork.SaveChangesAsync();
 
         return new CommentResponseDto
         {
             Id = comment.Id,
-            AuthorUsername = user.Username,
+            AuthorUsername = user.UserName,
             Content = comment.Content,
             CreatedAt = comment.CreatedAt
         };
@@ -52,15 +55,15 @@ public class CommentService : ICommentService
 
 
     }
-     public Task<IEnumerable<CommentResponseDto>> GetForPostAsync(Guid postId)
+     public async Task<IEnumerable<CommentResponseDto>> GetForPostAsync(Guid postId)
     {
    
-        var comments = await _commentRepository.GetForPostAsync(postId);
+        var comments = await _unitOfWork.Comments.GetByPostIdAsync(postId);
 
         return comments.Select(comment => new CommentResponseDto
         {
             Id = comment.Id,
-            AuthorUsername = comment.User.Username,
+            AuthorUsername = _unitOfWork.Users.GetByIdAsync(comment.UserId).Result.UserName,
             Content = comment.Content,
             CreatedAt = comment.CreatedAt
         });
